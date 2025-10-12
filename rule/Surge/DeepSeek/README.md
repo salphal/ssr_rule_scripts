@@ -38,11 +38,6 @@ https://raw.githubusercontent.com/salphal/ssr_rule_scripts/main/rule/Surge/DeepS
 
 https://cdn.jsdelivr.net/gh/salphal/ssr_rule_scripts@main/rule/Surge/DeepSeek/DeepSeek.list
 
-**MASTER分支 GHProxy (每日更新)**
-
-https://ghproxy.com/https://raw.githubusercontent.com/salphal/ssr_rule_scripts/main/rule/Surge/DeepSeek/DeepSeek.list
-
-
 ## 子规则/排除规则
 
 
