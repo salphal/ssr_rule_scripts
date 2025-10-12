@@ -32,15 +32,15 @@ Huffpost规则由《RULE GENERATOR 规则生成器》自动生成。
 #### 规则链接
 **MASTER分支 (每日更新)**
 
-https://raw.githubusercontent.com/salphal/ssr_rule_scripts/master/rule/Surge/DeepSeek/DeepSeek.list
+https://raw.githubusercontent.com/salphal/ssr_rule_scripts/main/rule/Surge/DeepSeek/DeepSeek.list
 
 **MASTER分支 CDN (每日更新)**
 
-https://cdn.jsdelivr.net/gh/salphal/ssr_rule_scripts@master/rule/Surge/DeepSeek/DeepSeek.list
+https://cdn.jsdelivr.net/gh/salphal/ssr_rule_scripts@main/rule/Surge/DeepSeek/DeepSeek.list
 
 **MASTER分支 GHProxy (每日更新)**
 
-https://ghproxy.com/https://raw.githubusercontent.com/salphal/ssr_rule_scripts/master/rule/Surge/DeepSeek/DeepSeek.list
+https://ghproxy.com/https://raw.githubusercontent.com/salphal/ssr_rule_scripts/main/rule/Surge/DeepSeek/DeepSeek.list
 
 
 ## 子规则/排除规则
