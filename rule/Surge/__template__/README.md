@@ -17,13 +17,13 @@
 ## 规则统计
 
 
-最后更新时间：2025-10-13 10:43:28
+最后更新时间：${{ datetime }}
 
 各类型规则统计:
 
 | 类型            | 数量(条) |
 |---------------|-------|
-| DOMAIN        | 1     |
+| DOMAIN        | 0     |
 | DOMAIN-SUFFIX | 2     |
 | TOTAL         | 3     |
 
@@ -36,20 +36,20 @@
 ## Surge
 
 #### 使用说明
-- DeepSeek.list，请使用RULE-SET。
+- ${{ TempName }}.list，请使用RULE-SET。
 
 #### 配置建议
-- DeepSeek.list 单独使用。
+- ${{ TempName }}.list 单独使用。
 
 #### 规则链接
 **MAIN分支 (每日更新)**
 
 
-https://raw.githubusercontent.com/salphal/ssr_rule_scripts/main/rule/Surge/DeepSeek/DeepSeek.list
+https://raw.githubusercontent.com/salphal/ssr_rule_scripts/main/rule/Surge/${{ TempName }}/${{ TempName }}.list
 
 **MAIN分支 CDN (每日更新)**
 
-https://cdn.jsdelivr.net/gh/salphal/ssr_rule_scripts@main/rule/Surge/DeepSeek/DeepSeek.list
+https://cdn.jsdelivr.net/gh/salphal/ssr_rule_scripts@main/rule/Surge/${{ TempName }}/${{ TempName }}.list
 
 
 ---

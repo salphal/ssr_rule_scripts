@@ -1,0 +1,11 @@
+# NAME: ${{ TempName }}
+# AUTHOR: alphal
+# REPO: https://github.com/alphal/ios_rule_script
+# UPDATED: ${{ datetime }}
+# DOMAIN: 1
+# DOMAIN-SUFFIX: 2
+# TOTAL: 3
+
+DOMAIN,${{ tempname }}.com
+DOMAIN-SUFFIX,api.${{ tempname }}.com
+DOMAIN-SUFFIX,${{ tempname }}.com
