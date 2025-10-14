@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const cp = require('child_process');
 
 function formatDate(date = new Date()) {
   const pad = (n) => String(n).padStart(2, '0');
@@ -167,22 +168,81 @@ function processRuleDir(ruleDir) {
   return { changed: true, listFile, readmeFile };
 }
 
+function getChangedRuleDirs(repoRoot, ruleRoot) {
+  // Use git porcelain to capture staged and unstaged changes
+  let output = '';
+  try {
+    output = cp.execSync('git status --porcelain', { cwd: repoRoot, encoding: 'utf8' });
+  } catch (e) {
+    return new Set();
+  }
+
+  const changed = new Set();
+  const changedPaths = [];
+  const lines = output.split(/\r?\n/).filter(Boolean);
+  for (const line of lines) {
+    // Line formats include: " M path", "A  path", "R  old -> new"
+    // We only care about the final path token
+    const renameIdx = line.indexOf('->');
+    const rawPath = renameIdx !== -1
+      ? line.slice(renameIdx + 2).trim()
+      : line.slice(3).trim(); // skip status columns
+    if (!rawPath) continue;
+
+    // Normalize to POSIX-style and ensure under rule/
+    const posixPath = rawPath.replace(/\\/g, '/');
+    if (!posixPath.startsWith('rule/')) continue;
+    changedPaths.push(posixPath);
+
+    // Expect structure: rule/<platform>/<ruleSet>/...
+    const parts = posixPath.split('/');
+    if (parts.length < 3) continue;
+    const platform = parts[1];
+    const ruleSet = parts[2];
+    if (!platform || !ruleSet) continue;
+    if (platform === '__template__') continue;
+
+    const absDir = path.join(ruleRoot, platform, ruleSet);
+    if (fs.existsSync(absDir) && fs.statSync(absDir).isDirectory()) {
+      changed.add(absDir);
+    }
+  }
+
+  if (changedPaths.length > 0) {
+    console.log('Changed files under rule/:');
+    for (const p of changedPaths) {
+      console.log(' -', p);
+    }
+  }
+
+  return changed;
+}
+
 function main() {
-  const root = path.resolve(__dirname);
-  // Traverse first-level (e.g., Surge) and then each rule set under it
-  const platforms = listDirs(root);
+  const ruleRoot = path.resolve(__dirname);
+  const repoRoot = path.resolve(ruleRoot, '..');
   const ignored = new Set(['__template__', '.git']);
+
+  // Compute changed rule directories from git status
+  const changedDirs = getChangedRuleDirs(repoRoot, ruleRoot);
+
   let changedAny = false;
 
-  for (const platform of platforms) {
-    const platformDir = path.join(root, platform);
-    const ruleSets = listDirs(platformDir).filter((d) => !ignored.has(d) && d !== '__template__');
-    for (const ruleSet of ruleSets) {
-      if (ruleSet === '__template__') continue;
-      const dir = path.join(platformDir, ruleSet);
-      const result = processRuleDir(dir);
-      if (result.changed) changedAny = true;
-    }
+  if (changedDirs.size === 0) {
+    console.log('No changed files under rule/ detected by git status.');
+    return;
+  }
+
+  console.log('Rule directories to update:');
+  for (const dir of changedDirs) {
+    console.log(' -', path.relative(repoRoot, dir));
+  }
+
+  for (const dir of changedDirs) {
+    const basename = path.basename(dir);
+    if (ignored.has(basename)) continue;
+    const result = processRuleDir(dir);
+    if (result.changed) changedAny = true;
   }
 
   if (!changedAny) {
