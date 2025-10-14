@@ -1,12 +1,13 @@
 # NAME: Cursor
 # AUTHOR: alphal
 # REPO: https://github.com/alphal/ios_rule_script
-# UPDATED: 2025-10-13 10:43:03
+# UPDATED: 2025-10-14 14:17:13
 # DOMAIN: 0
-# DOMAIN-SUFFIX: 4
-# TOTAL: 4
+# DOMAIN-SUFFIX: 5
+# TOTAL: 5
 
 DOMAIN-SUFFIX,api.cline.bot
 DOMAIN-SUFFIX,api2.cursor.com
+DOMAIN-SUFFIX,cursorapi.com
 DOMAIN-SUFFIX,cursor.com
 DOMAIN-SUFFIX,cursor.sh
