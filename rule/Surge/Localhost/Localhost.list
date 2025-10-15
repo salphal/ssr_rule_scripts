@@ -1,13 +1,13 @@
 # NAME: Localhost
 # AUTHOR: alphal
 # REPO: https://github.com/alphal/ios_rule_script
-# UPDATED: 2025-10-15 11:25:50
+# UPDATED: 2025-10-15 11:35:19
 # DOMAIN: 1
 # DOMAIN-SUFFIX: 0
 # TOTAL: 5
 
-IP-CIDR,127.0.0.0/8
-IP-CIDR,10.0.0.0/8
-IP-CIDR,172.16.0.0/12
-IP-CIDR,192.168.0.0/16
+IP-CIDR,127.0.0.0/8,no-resolve
+IP-CIDR,10.0.0.0/8,no-resolve
+IP-CIDR,172.16.0.0/12,no-resolve
+IP-CIDR,192.168.0.0/16,no-resolve
 DOMAIN,localhost
