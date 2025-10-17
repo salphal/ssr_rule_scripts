@@ -1,0 +1,9 @@
+# NAME: Chrome
+# AUTHOR: alphal
+# REPO: https://github.com/alphal/ios_rule_script
+# UPDATED: 2025-10-17 23:47:46
+# DOMAIN: 0
+# DOMAIN-SUFFIX: 1
+# TOTAL: 1
+
+DOMAIN-SUFFIX,accounts.chrome.com

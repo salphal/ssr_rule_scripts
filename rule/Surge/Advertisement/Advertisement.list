@@ -1,0 +1,11 @@
+# NAME: Advertisement
+# AUTHOR: alphal
+# REPO: https://github.com/alphal/ios_rule_script
+# UPDATED: 2025-10-17 23:47:46
+# DOMAIN: 1
+# DOMAIN-SUFFIX: 2
+# TOTAL: 3
+
+DOMAIN,advertisement.com
+DOMAIN-SUFFIX,api.advertisement.com
+DOMAIN-SUFFIX,advertisement.com
